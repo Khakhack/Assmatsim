@@ -15,17 +15,36 @@
       <input type="date" id="dateNaissance" required><br>
       <input type="text" id="parent" placeholder="Nom du parent" required><br>
       <input type="tel" id="telephone" placeholder="Téléphone du parent" required><br>
+      
       <select id="typeContrat" required>
         <option value="">Type de contrat</option>
         <option value="complet">Année complète</option>
         <option value="incomplet">Année incomplète</option>
       </select><br>
+      
+      <select id="cdiCdd" required>
+        <option value="">CDI ou CDD ?</option>
+        <option value="CDI">CDI</option>
+        <option value="CDD">CDD</option>
+      </select><br>
+
       <input type="date" id="debutContrat" required><br>
+      
       <input type="number" id="heuresSemaine" placeholder="Heures par semaine" required><br>
       <input type="number" id="joursSemaine" placeholder="Jours de garde par semaine" required><br>
+      
+      <input type="number" id="tarifHoraire" placeholder="Tarif horaire brut (€)" step="0.01" required><br>
+      <input type="number" id="majHeuresComp" placeholder="% Majoration heures complémentaires" step="0.01" required><br>
+      <input type="number" id="majHeuresSupp" placeholder="% Majoration heures supplémentaires" step="0.01" required><br>
+
+      <input type="number" id="fraisRepas" placeholder="Frais de repas (€ si fourni)" step="0.01"><br>
+      <input type="number" id="fraisEntretien" placeholder="Frais d'entretien (€ par jour)" step="0.01"><br>
+
       <textarea id="remarques" placeholder="Remarques (allergies, infos...)"></textarea><br>
+      
       <button type="submit">Enregistrer</button>
     </form>
+
     <br>
     <a href="index.html"><button>Retour Accueil</button></a>
   </div>
