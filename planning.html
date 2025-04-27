@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Planning</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Planning</h1>
+    <form id="formPlanning">
+      <select id="enfantPlanning" required>
+        <option value="">Sélectionnez un enfant</option>
+      </select><br><br>
+      <input type="date" id="dateTravail" required><br>
+      <input type="time" id="heureArrivee" required><br>
+      <input type="time" id="heureDepart" required><br>
+      <button type="submit">Ajouter la journée</button>
+    </form>
+    <br>
+    <div id="listePlanning"></div>
+    <br>
+    <a href="index.html"><button>Retour Accueil</button></a>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

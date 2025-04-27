@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculs</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Calculs & Convertisseur</h1>
+
+    <div id="calculsSection">
+      <select id="enfantCalculs" required>
+        <option value="">Sélectionnez un enfant</option>
+      </select><br><br>
+      <button onclick="afficherCalculs()">Voir les calculs</button>
+      <div id="resultatCalculs"></div>
+    </div>
+
+    <hr>
+
+    <h2>Convertisseur Net ⇄ Brut</h2>
+    <div id="convertisseur">
+      <input type="number" id="tauxNet" placeholder="Entrer taux NET" step="0.01">
+      <button onclick="convertirNetBrut()">Convertir en BRUT</button><br><br>
+      <input type="number" id="tauxBrut" placeholder="Entrer taux BRUT" step="0.01">
+      <button onclick="convertirBrutNet()">Convertir en NET</button>
+      <div id="resultatConvertisseur"></div>
+      <p><small>Conversion approximative basée sur 23% de charges (Pajemploi).</small></p>
+    </div>
+
+    <br>
+    <a href="index.html"><button>Retour Accueil</button></a>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

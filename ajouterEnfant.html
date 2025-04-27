@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ajouter un enfant</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Ajouter un enfant</h1>
+    <form id="formEnfant">
+      <input type="text" id="prenom" placeholder="Prénom" required><br>
+      <input type="text" id="nom" placeholder="Nom" required><br>
+      <input type="date" id="dateNaissance" required><br>
+      <input type="text" id="parent" placeholder="Nom du parent" required><br>
+      <input type="tel" id="telephone" placeholder="Téléphone du parent" required><br>
+      <select id="typeContrat" required>
+        <option value="">Type de contrat</option>
+        <option value="complet">Année complète</option>
+        <option value="incomplet">Année incomplète</option>
+      </select><br>
+      <input type="date" id="debutContrat" required><br>
+      <input type="number" id="heuresSemaine" placeholder="Heures par semaine" required><br>
+      <input type="number" id="joursSemaine" placeholder="Jours de garde par semaine" required><br>
+      <textarea id="remarques" placeholder="Remarques (allergies, infos...)"></textarea><br>
+      <button type="submit">Enregistrer</button>
+    </form>
+    <br>
+    <a href="index.html"><button>Retour Accueil</button></a>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
