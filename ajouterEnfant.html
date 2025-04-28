@@ -1,55 +1,40 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ajouter un enfant</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajouter un enfant</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js"></script>
 </head>
 <body>
-  <div class="container">
+
+<div class="container">
     <h1>Ajouter un enfant</h1>
-    <form id="formEnfant">
-      <input type="text" id="prenom" placeholder="Prénom" required><br>
-      <input type="text" id="nom" placeholder="Nom" required><br>
-      <input type="date" id="dateNaissance" required><br>
-      <input type="text" id="parent" placeholder="Nom du parent" required><br>
-      <input type="tel" id="telephone" placeholder="Téléphone du parent" required><br>
-      
-      <select id="typeContrat" required>
-        <option value="">Type de contrat</option>
-        <option value="complet">Année complète</option>
-        <option value="incomplet">Année incomplète</option>
-      </select><br>
-      
-      <select id="cdiCdd" required>
-        <option value="">CDI ou CDD ?</option>
-        <option value="CDI">CDI</option>
-        <option value="CDD">CDD</option>
-      </select><br>
 
-      <input type="date" id="debutContrat" required><br>
-      
-      <input type="number" id="heuresSemaine" placeholder="Heures par semaine" required><br>
-      <input type="number" id="joursSemaine" placeholder="Jours de garde par semaine" required><br>
-      
-      <input type="number" id="tarifHoraire" placeholder="Tarif horaire brut (€)" step="0.01" required><br>
-      <input type="number" id="majHeuresComp" placeholder="% Majoration heures complémentaires" step="0.01" required><br>
-      <input type="number" id="majHeuresSupp" placeholder="% Majoration heures supplémentaires" step="0.01" required><br>
+    <input type="text" id="prenom" placeholder="Prénom"><br>
+    <input type="text" id="nom" placeholder="Nom"><br>
+    <input type="date" id="dateNaissance" placeholder="Date de naissance"><br>
+    <input type="text" id="nomParent" placeholder="Nom du parent"><br>
+    <input type="text" id="telephone" placeholder="Téléphone"><br>
+    <select id="typeContrat">
+        <option value="complet">Contrat Complet</option>
+        <option value="incomplet">Contrat Incomplet</option>
+    </select><br>
+    <input type="date" id="dateDebut" placeholder="Date de début de contrat"><br>
+    <input type="number" id="heuresParSemaine" placeholder="Nombre d'heures par semaine"><br>
+    <input type="number" id="joursParSemaine" placeholder="Nombre de jours par semaine"><br>
+    <textarea id="remarques" placeholder="Remarques"></textarea><br>
 
-      <input type="number" id="fraisRepas" placeholder="Frais de repas (€ si fourni)" step="0.01"><br>
-      <input type="number" id="fraisEntretien" placeholder="Frais d'entretien (€ par jour)" step="0.01"><br>
+    <button onclick="enregistrerEnfant()">Enregistrer</button>
+</div>
 
-      <textarea id="remarques" placeholder="Remarques (allergies, infos...)"></textarea><br>
-      
-      <button onclick="enregistrerEnfant()">Enregistrer</button>
+<script src="auth.js"></script>
+<script src="app.js"></script>
 
-    </form>
-
-    <br>
-    <a href="index.html"><button>Retour Accueil</button></a>
-  </div>
-
-  <script src="app.js"></script>
 </body>
 </html>
