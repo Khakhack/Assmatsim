@@ -28,3 +28,15 @@ function connecterUtilisateur(email, motdepasse) {
             alert(error.message);
         });
 }
+// Fonction pour se déconnecter
+function deconnexionUtilisateur() {
+    auth.signOut()
+        .then(() => {
+            console.log('Déconnexion réussie');
+            alert('Déconnexion réussie');
+            window.location.href = "connexion.html"; // Redirige vers la page de connexion
+        })
+        .catch((error) => {
+            console.error('Erreur déconnexion', error.message);
+        });
+}

@@ -7,41 +7,41 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
   <div class="container">
     <h1>Bienvenue sur votre App Assmat</h1>
     <div class="button-container">
-      <a href="ajouterEnfant.html">
-        <button>🍼 Ajouter un enfant</button>
-      </a>
-      <a href="enfants.html">
-        <button>📄 Enfants / Contrats</button>
-      </a>
-      <a href="planning.html">
-        <button>⏰ Planning</button>
-      </a>
-      <a href="calculs.html">
-        <button>➗ Calculs</button>
-      </a>
+      <a href="ajouterEnfant.html"><button>Ajouter un enfant</button></a>
+      <a href="enfants.html"><button>Enfants / Contrats</button></a>
+      <a href="planning.html"><button>Planning</button></a>
+      <a href="calculs.html"><button>Calculs</button></a>
     </div>
+
+    <!-- Bouton Déconnexion bien placé -->
+    <button onclick="deconnexionUtilisateur()">Déconnexion</button>
   </div>
+
   <!-- Import Firebase SDK -->
-<script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js"></script>
 
-<script>
-  // Ton code de configuration Firebase
-  const firebaseConfig = {
-    apiKey: "AIzaSyCCwymqQqc1eBccg4zbgz-E_Mnxx-3cGpQ",
-    authDomain: "assmatsim.firebaseapp.com",
-    projectId: "assmatsim",
-    storageBucket: "assmatsim.appspot.com",
-    messagingSenderId: "173386720494",
-    appId: "1:173386720494:web:e24938ef08719a5dad2298",
-    measurementId: "G-DYJD1RPEX9"
-  };
+  <!-- Ton code de configuration Firebase -->
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyCCwymqQqc1eBccg4zbgz-E_Mnxx-3cGpQ",
+      authDomain: "assmatsim.firebaseapp.com",
+      projectId: "assmatsim",
+      storageBucket: "assmatsim.appspot.com",
+      messagingSenderId: "173386720494",
+      appId: "1:173386720494:web:e24938ef08719a5dad2298",
+      measurementId: "G-DYJD1RPEX9"
+    };
 
-  // Initialiser Firebase
-  const app = firebase.initializeApp(firebaseConfig);
-</script>
+    const app = firebase.initializeApp(firebaseConfig);
+  </script>
+
+  <!-- Ton fichier pour gérer l'authentification -->
+  <script src="auth.js"></script>
+
 </body>
 </html>
