@@ -3,40 +3,14 @@ body {
     font-family: 'Comic Sans MS', 'Arial', sans-serif;
     background: linear-gradient(to bottom, #87cefa, #ffffff);
     background-attachment: fixed;
-    position: relative;
-    overflow-x: hidden;
-    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    min-height: 100vh;
     text-align: center;
 }
 
-body::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 200%;
-    height: 200%;
-    background: 
-        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.6) 0%, transparent 40%),
-        radial-gradient(circle at 80% 30%, rgba(255,255,255,0.6) 0%, transparent 40%),
-        radial-gradient(circle at 30% 70%, rgba(255,255,255,0.6) 0%, transparent 40%),
-        radial-gradient(circle at 70% 80%, rgba(255,255,255,0.6) 0%, transparent 40%);
-    opacity: 0.5;
-    animation: clouds 120s linear infinite;
-    z-index: 0;
-}
-
-@keyframes clouds {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-25%); }
-}
-
 .container {
-    position: relative;
-    z-index: 1;
     margin: 20px;
     padding: 30px;
     background: rgba(255, 255, 255, 0.9);
