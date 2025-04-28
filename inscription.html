@@ -1,23 +1,22 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inscription - App Assmat</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js"></script>
-    <script src="app.js"></script>
-    <script src="auth.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inscription</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Créer un compte</h1>
-        <input type="email" id="emailInscription" placeholder="Email">
-        <input type="password" id="passwordInscription" placeholder="Mot de passe">
-        <button onclick="inscrireUtilisateur(document.getElementById('emailInscription').value, document.getElementById('passwordInscription').value)">S'inscrire</button>
-        <br><br>
-        <a href="connexion.html">Déjà un compte ? Connectez-vous</a>
-    </div>
+  <div class="container">
+    <h1>Inscription</h1>
+    <form id="formInscription">
+      <input type="email" id="emailInscription" placeholder="Email" required>
+      <input type="password" id="motDePasseInscription" placeholder="Mot de passe" required>
+      <button type="submit">S'inscrire</button>
+    </form>
+    <p>Déjà un compte ? <a href="connexion.html">Se connecter</a></p>
+  </div>
+
+  <script src="auth.js"></script>
 </body>
 </html>
