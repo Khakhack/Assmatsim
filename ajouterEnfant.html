@@ -5,32 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ajouter un enfant</title>
   <link rel="stylesheet" href="style.css">
-  <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js"></script>
 </head>
 <body>
 
   <div class="container">
     <h1>Ajouter un enfant</h1>
-
-    <!-- Bouton retour à l'accueil -->
-    <a href="index.html"><button type="button">Retour à l'accueil</button></a>
-
-    <form id="formEnfant">
-
+    <form id="formulaireEnfant" class="form-container">
       <input type="text" id="prenom" placeholder="Prénom" required>
       <input type="text" id="nom" placeholder="Nom" required>
       <input type="date" id="dateNaissance" placeholder="Date de naissance" required>
       <input type="text" id="nomParent" placeholder="Nom du parent" required>
       <input type="tel" id="telephone" placeholder="Téléphone" required>
 
-      <select id="typeContrat" required>
+      <select id="typeContrat">
         <option value="Complet">Contrat Complet</option>
         <option value="Incomplet">Contrat Incomplet</option>
       </select>
 
-      <select id="cdiCdd" required>
+      <select id="cdiCdd">
         <option value="CDI">CDI</option>
         <option value="CDD">CDD</option>
       </select>
@@ -39,11 +31,11 @@
       <input type="number" id="heuresSemaine" placeholder="Nombre d'heures par semaine" required>
       <input type="number" id="joursSemaine" placeholder="Nombre de jours par semaine" required>
 
-      <input type="number" id="tarifHoraire" placeholder="Tarif horaire (€)" required>
+      <input type="number" id="montantHoraire" placeholder="Montant horaire (€)" required>
       <input type="number" id="majorationComplementaire" placeholder="Majoration heures complémentaires (%)" required>
       <input type="number" id="majorationSupplementaire" placeholder="Majoration heures supplémentaires (%)" required>
 
-      <select id="repasFournis" required>
+      <select id="repasFournis">
         <option value="Oui">Repas fournis par les parents</option>
         <option value="Non">Repas fournis par l'assmat</option>
       </select>
@@ -53,27 +45,64 @@
 
       <textarea id="remarques" placeholder="Remarques"></textarea>
 
-      <button type="submit">Enregistrer</button>
+      <button type="button" onclick="enregistrerEnfant()">Enregistrer</button>
     </form>
   </div>
 
-  <script>
-    const firebaseConfig = {
-      apiKey: "TA_CLE_API",
-      authDomain: "TON_DOMAINE.firebaseapp.com",
-      projectId: "TON_PROJECT_ID",
-      storageBucket: "TON_PROJECT_ID.appspot.com",
-      messagingSenderId: "TON_MESSAGING_ID",
-      appId: "TON_APP_ID",
-      measurementId: "TON_MEASUREMENT_ID"
-    };
+  <!-- IMPORTATION FIREBASE + SCRIPT -->
+  <script type="module">
+    import { db } from './firebase.js';
+    import { collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
 
-    firebase.initializeApp(firebaseConfig);
-    const db = firebase.firestore();
+    async function enregistrerEnfant() {
+      const prenom = document.getElementById('prenom').value;
+      const nom = document.getElementById('nom').value;
+      const dateNaissance = document.getElementById('dateNaissance').value;
+      const nomParent = document.getElementById('nomParent').value;
+      const telephone = document.getElementById('telephone').value;
+      const typeContrat = document.getElementById('typeContrat').value;
+      const cdiCdd = document.getElementById('cdiCdd').value;
+      const dateDebutContrat = document.getElementById('dateDebutContrat').value;
+      const heuresSemaine = document.getElementById('heuresSemaine').value;
+      const joursSemaine = document.getElementById('joursSemaine').value;
+      const montantHoraire = document.getElementById('montantHoraire').value;
+      const majorationComplementaire = document.getElementById('majorationComplementaire').value;
+      const majorationSupplementaire = document.getElementById('majorationSupplementaire').value;
+      const repasFournis = document.getElementById('repasFournis').value;
+      const prixRepas = document.getElementById('prixRepas').value;
+      const fraisEntretien = document.getElementById('fraisEntretien').value;
+      const remarques = document.getElementById('remarques').value;
+
+      try {
+        await addDoc(collection(db, "enfants"), {
+          prenom,
+          nom,
+          dateNaissance,
+          nomParent,
+          telephone,
+          typeContrat,
+          cdiCdd,
+          dateDebutContrat,
+          heuresSemaine,
+          joursSemaine,
+          montantHoraire,
+          majorationComplementaire,
+          majorationSupplementaire,
+          repasFournis,
+          prixRepas,
+          fraisEntretien,
+          remarques,
+          timestamp: serverTimestamp()
+        });
+
+        alert("Enfant enregistré avec succès !");
+        window.location.href = "enfants.html"; // Rediriger vers la liste après enregistrement
+      } catch (e) {
+        console.error("Erreur lors de l'ajout :", e);
+        alert("Erreur lors de l'enregistrement. Merci de réessayer.");
+      }
+    }
   </script>
-
-  <script src="app.js"></script>
-  <script src="auth.js"></script>
 
 </body>
 </html>

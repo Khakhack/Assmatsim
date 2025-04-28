@@ -5,40 +5,85 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Liste des enfants</title>
   <link rel="stylesheet" href="style.css">
-  <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js"></script>
 </head>
 <body>
 
   <div class="container">
     <h1>Liste des enfants</h1>
+    <div id="listeEnfants" class="liste-container"></div>
 
-    <!-- Bouton retour à l'accueil -->
-    <a href="index.html"><button type="button">Retour à l'accueil</button></a>
-
-    <!-- Liste enfants -->
-    <div id="listeEnfants"></div>
-
+    <a href="index.html"><button>Retour à l'accueil</button></a>
   </div>
 
-  <script>
-    const firebaseConfig = {
-      apiKey: "TA_CLE_API",
-      authDomain: "TON_DOMAINE.firebaseapp.com",
-      projectId: "TON_PROJECT_ID",
-      storageBucket: "TON_PROJECT_ID.appspot.com",
-      messagingSenderId: "TON_MESSAGING_ID",
-      appId: "TON_APP_ID",
-      measurementId: "TON_MEASUREMENT_ID"
-    };
+  <!-- IMPORTATION FIREBASE + SCRIPT -->
+  <script type="module">
+    import { db } from './firebase.js';
+    import { collection, getDocs, orderBy, query, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
 
-    firebase.initializeApp(firebaseConfig);
-    const db = firebase.firestore();
+    async function afficherEnfants() {
+      const liste = document.getElementById('listeEnfants');
+      liste.innerHTML = "";
+
+      const q = query(collection(db, "enfants"), orderBy("timestamp", "desc"));
+      const querySnapshot = await getDocs(q);
+
+      querySnapshot.forEach((document) => {
+        const enfant = document.data();
+        const enfantId = document.id; // ID Firestore pour supprimer
+
+        const enfantDiv = document.createElement('div');
+        enfantDiv.classList.add('enfant-card');
+
+        enfantDiv.innerHTML = `
+          <h3>${enfant.prenom} ${enfant.nom}</h3>
+          <p><strong>Date de naissance :</strong> ${enfant.dateNaissance}</p>
+          <button onclick="afficherDetails('${enfantId}')">Voir Détail</button>
+          <button onclick="supprimerEnfant('${enfantId}')">Supprimer</button>
+        `;
+
+        liste.appendChild(enfantDiv);
+      });
+    }
+
+    // Fonction pour afficher tous les détails dans une popup
+    window.afficherDetails = async function(id) {
+      const enfantRef = doc(db, "enfants", id);
+      const enfantSnap = await getDoc(enfantRef);
+
+      if (enfantSnap.exists()) {
+        const enfant = enfantSnap.data();
+        alert(
+          `Détails de ${enfant.prenom} ${enfant.nom} :\n\n` +
+          `Naissance : ${enfant.dateNaissance}\n` +
+          `Parent : ${enfant.nomParent} (${enfant.telephone})\n` +
+          `Contrat : ${enfant.typeContrat} (${enfant.cdiCdd})\n` +
+          `Début : ${enfant.dateDebutContrat}\n` +
+          `Heures/Semaine : ${enfant.heuresSemaine}\n` +
+          `Jours/Semaine : ${enfant.joursSemaine}\n` +
+          `Montant horaire : ${enfant.montantHoraire} €/h\n` +
+          `Majoration complémentaire : ${enfant.majorationComplementaire}%\n` +
+          `Majoration supplémentaire : ${enfant.majorationSupplementaire}%\n` +
+          `Repas : ${enfant.repasFournis} - ${enfant.prixRepas} €/repas\n` +
+          `Frais d'entretien : ${enfant.fraisEntretien} €\n` +
+          `Remarques : ${enfant.remarques}`
+        );
+      } else {
+        alert("Impossible de trouver les détails.");
+      }
+    }
+
+    // Fonction pour supprimer un enfant
+    window.supprimerEnfant = async function(id) {
+      if (confirm("Êtes-vous sûr de vouloir supprimer cet enfant ?")) {
+        await deleteDoc(doc(db, "enfants", id));
+        alert("Enfant supprimé !");
+        afficherEnfants(); // Recharger la liste
+      }
+    }
+
+    // Charger automatiquement la liste au démarrage
+    afficherEnfants();
   </script>
-
-  <script src="app.js"></script>
-  <script src="auth.js"></script>
 
 </body>
 </html>
