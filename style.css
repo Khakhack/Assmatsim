@@ -1,7 +1,8 @@
 body {
     margin: 0;
     font-family: 'Comic Sans MS', 'Arial', sans-serif;
-    background-color: #d6f6ff;
+    background: url('https://i.imgur.com/ZYvO6OU.png') no-repeat center center fixed;
+    background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -11,52 +12,58 @@ body {
 
 .container {
     margin: 20px;
-    padding: 20px;
-    background: #ffffff;
-    border-radius: 20px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 30px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
 }
 
 h1, h2, h3 {
     color: #4a90e2;
-    margin-bottom: 20px;
+    font-size: 32px;
+    margin-bottom: 30px;
 }
 
 .button-container {
     margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 button {
-    margin: 10px;
-    padding: 15px 30px;
-    font-size: 18px;
+    margin: 5px;
+    padding: 20px 40px;
+    font-size: 20px;
     border: none;
     border-radius: 30px;
-    background-color: #ffd166;
+    background: linear-gradient(135deg, #ffd166, #ff7f50);
     color: #333;
     cursor: pointer;
-    transition: transform 0.2s, background-color 0.2s;
+    transition: transform 0.3s, background-color 0.3s;
+    box-shadow: 0px 5px 10px rgba(0,0,0,0.2);
 }
 
 button:hover {
-    background-color: #fcbf49;
+    background: linear-gradient(135deg, #fcbf49, #ff6347);
     transform: scale(1.05);
 }
 
 input, select, textarea {
     margin: 10px;
-    padding: 12px;
-    width: 80%;
-    max-width: 350px;
-    font-size: 16px;
+    padding: 14px;
+    width: 90%;
+    max-width: 400px;
+    font-size: 18px;
     border-radius: 20px;
     border: 2px solid #a0d8ef;
 }
 
 #resultatCalculs, #listeEnfants, #listePlanning, #resultatConvertisseur {
     margin-top: 20px;
-    padding: 15px;
+    padding: 20px;
     background-color: #ffffff;
     border-radius: 20px;
-    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    box-shadow: 0px 0px 15px rgba(0,0,0,0.2);
 }
