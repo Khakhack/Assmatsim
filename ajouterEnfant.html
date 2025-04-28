@@ -9,43 +9,48 @@
 <body>
     <div class="container">
         <h1>Ajouter un enfant</h1>
-        <form id="formulaireEnfant" class="form-container">
+        <form id="formEnfant">
             <input type="text" id="prenom" placeholder="Prénom" required>
             <input type="text" id="nom" placeholder="Nom" required>
             <input type="date" id="dateNaissance" placeholder="Date de naissance" required>
             <input type="text" id="nomParent" placeholder="Nom du parent" required>
             <input type="tel" id="telephone" placeholder="Téléphone" required>
             
-            <select id="typeContrat">
-                <option value="Complet">Contrat Complet</option>
-                <option value="Incomplet">Contrat Incomplet</option>
+            <select id="typeContrat" required>
+                <option value="">Type de contrat</option>
+                <option value="complet">Contrat Complet</option>
+                <option value="incomplet">Contrat Incomplet</option>
             </select>
 
-            <select id="cdiCdd">
-                <option value="CDI">CDI</option>
-                <option value="CDD">CDD</option>
+            <select id="typeCDI_CDD" required>
+                <option value="">CDI ou CDD</option>
+                <option value="cdi">CDI</option>
+                <option value="cdd">CDD</option>
             </select>
 
-            <input type="date" id="dateDebutContrat" placeholder="Date de début de contrat" required>
+            <input type="date" id="dateDebut" placeholder="Date de début de contrat" required>
+
             <input type="number" id="heuresSemaine" placeholder="Nombre d'heures par semaine" required>
             <input type="number" id="joursSemaine" placeholder="Nombre de jours par semaine" required>
 
-            <input type="number" id="montantHoraire" placeholder="Montant horaire (€)" required>
-            <input type="number" id="majorationComplementaire" placeholder="Majoration heures complémentaires (%)" required>
-            <input type="number" id="majorationSupplementaire" placeholder="Majoration heures supplémentaires (%)" required>
+            <input type="number" id="tauxHoraire" placeholder="Taux horaire net (€)" required>
+            <input type="number" id="majorationComplementaire" placeholder="% Majoration heure complémentaire" required>
+            <input type="number" id="majorationSupplementaire" placeholder="% Majoration heure supplémentaire" required>
 
-            <select id="repasFournis">
-                <option value="Oui">Repas fournis par les parents</option>
-                <option value="Non">Repas fournis par l'assmat</option>
-            </select>
+            <input type="number" id="repas" placeholder="Montant repas (€) si fourni" required>
+            <input type="number" id="entretien" placeholder="Frais d'entretien (€)" required>
 
-            <input type="number" id="prixRepas" placeholder="Prix du repas (€)">
-            <input type="number" id="fraisEntretien" placeholder="Frais d'entretien (€)" required>
-
-            <textarea id="remarques" placeholder="Remarques"></textarea>
+            <textarea id="remarques" placeholder="Remarques (allergies, etc...)"></textarea>
 
             <button type="submit">Enregistrer</button>
         </form>
+
+        <!-- BOUTON RETOUR -->
+        <div style="margin-top: 20px;">
+            <a href="index.html">
+                <button>Retour à l'accueil</button>
+            </a>
+        </div>
     </div>
 
     <script src="app.js"></script>
