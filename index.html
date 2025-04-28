@@ -24,5 +24,24 @@
       </a>
     </div>
   </div>
+  <!-- Import Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js"></script>
+
+<script>
+  // Ton code de configuration Firebase
+  const firebaseConfig = {
+    apiKey: "AIzaSyCCwymqQqc1eBccg4zbgz-E_Mnxx-3cGpQ",
+    authDomain: "assmatsim.firebaseapp.com",
+    projectId: "assmatsim",
+    storageBucket: "assmatsim.appspot.com",
+    messagingSenderId: "173386720494",
+    appId: "1:173386720494:web:e24938ef08719a5dad2298",
+    measurementId: "G-DYJD1RPEX9"
+  };
+
+  // Initialiser Firebase
+  const app = firebase.initializeApp(firebaseConfig);
+</script>
 </body>
 </html>
