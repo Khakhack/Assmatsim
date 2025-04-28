@@ -5,23 +5,75 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ajouter un enfant</title>
   <link rel="stylesheet" href="style.css">
+  <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js"></script>
 </head>
 <body>
+
   <div class="container">
     <h1>Ajouter un enfant</h1>
 
-    <!-- Bouton Retour ajouté ici -->
+    <!-- Bouton retour à l'accueil -->
     <a href="index.html"><button type="button">Retour à l'accueil</button></a>
 
     <form id="formEnfant">
-      <!-- Tous tes champs du formulaire ici... -->
+
       <input type="text" id="prenom" placeholder="Prénom" required>
       <input type="text" id="nom" placeholder="Nom" required>
-      <!-- etc. -->
+      <input type="date" id="dateNaissance" placeholder="Date de naissance" required>
+      <input type="text" id="nomParent" placeholder="Nom du parent" required>
+      <input type="tel" id="telephone" placeholder="Téléphone" required>
+
+      <select id="typeContrat" required>
+        <option value="Complet">Contrat Complet</option>
+        <option value="Incomplet">Contrat Incomplet</option>
+      </select>
+
+      <select id="cdiCdd" required>
+        <option value="CDI">CDI</option>
+        <option value="CDD">CDD</option>
+      </select>
+
+      <input type="date" id="dateDebutContrat" placeholder="Date de début de contrat" required>
+      <input type="number" id="heuresSemaine" placeholder="Nombre d'heures par semaine" required>
+      <input type="number" id="joursSemaine" placeholder="Nombre de jours par semaine" required>
+
+      <input type="number" id="tarifHoraire" placeholder="Tarif horaire (€)" required>
+      <input type="number" id="majorationComplementaire" placeholder="Majoration heures complémentaires (%)" required>
+      <input type="number" id="majorationSupplementaire" placeholder="Majoration heures supplémentaires (%)" required>
+
+      <select id="repasFournis" required>
+        <option value="Oui">Repas fournis par les parents</option>
+        <option value="Non">Repas fournis par l'assmat</option>
+      </select>
+
+      <input type="number" id="prixRepas" placeholder="Prix du repas (€)">
+      <input type="number" id="fraisEntretien" placeholder="Frais d'entretien (€)" required>
+
+      <textarea id="remarques" placeholder="Remarques"></textarea>
+
       <button type="submit">Enregistrer</button>
     </form>
   </div>
 
+  <script>
+    const firebaseConfig = {
+      apiKey: "TA_CLE_API",
+      authDomain: "TON_DOMAINE.firebaseapp.com",
+      projectId: "TON_PROJECT_ID",
+      storageBucket: "TON_PROJECT_ID.appspot.com",
+      messagingSenderId: "TON_MESSAGING_ID",
+      appId: "TON_APP_ID",
+      measurementId: "TON_MEASUREMENT_ID"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+  </script>
+
   <script src="app.js"></script>
+  <script src="auth.js"></script>
+
 </body>
 </html>

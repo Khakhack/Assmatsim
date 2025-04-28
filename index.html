@@ -7,18 +7,61 @@
   <link rel="stylesheet" href="style.css">
   <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js"></script>
 </head>
 <body>
+
   <div class="container">
     <h1>Bienvenue sur votre App Assmat</h1>
+    
+    <div id="bienvenue"></div> <!-- Ici affichage email connecté -->
+
     <div class="button-container">
-      <a href="ajouterEnfant.html"><button><img src="ajouter.png" alt="ajouter"> Ajouter un enfant</button></a>
-      <a href="enfants.html"><button><img src="contrat.png" alt="contrat"> Enfants / Contrats</button></a>
-      <a href="planning.html"><button><img src="planning.png" alt="planning"> Planning</button></a>
-      <a href="calculs.html"><button><img src="calculs.png" alt="calculs"> Calculs</button></a>
+      <a href="ajouterEnfant.html">
+        <button>
+          <img src="ajouter.png" alt="Ajouter"> Ajouter un enfant
+        </button>
+      </a>
+
+      <a href="enfants.html">
+        <button>
+          <img src="contrat.png" alt="Enfants"> Enfants / Contrats
+        </button>
+      </a>
+
+      <a href="planning.html">
+        <button>
+          <img src="planning.png" alt="Planning"> Planning
+        </button>
+      </a>
+
+      <a href="calculs.html">
+        <button>
+          <img src="calculs.png" alt="Calculs"> Calculs
+        </button>
+      </a>
     </div>
+
+    <button onclick="deconnexionUtilisateur()">Déconnexion</button>
   </div>
 
+  <script>
+    const firebaseConfig = {
+      apiKey: "TA_CLE_API",
+      authDomain: "TON_DOMAINE.firebaseapp.com",
+      projectId: "TON_PROJECT_ID",
+      storageBucket: "TON_PROJECT_ID.appspot.com",
+      messagingSenderId: "TON_MESSAGING_ID",
+      appId: "TON_APP_ID",
+      measurementId: "TON_MEASUREMENT_ID"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+  </script>
+
   <script src="auth.js"></script>
+
 </body>
 </html>

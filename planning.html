@@ -5,25 +5,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Planning</title>
   <link rel="stylesheet" href="style.css">
+  <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js"></script>
 </head>
 <body>
+
   <div class="container">
     <h1>Planning</h1>
-    <form id="formPlanning">
-      <select id="enfantPlanning" required>
-        <option value="">Sélectionnez un enfant</option>
-      </select><br><br>
-      <input type="date" id="dateTravail" required><br>
-      <input type="time" id="heureArrivee" required><br>
-      <input type="time" id="heureDepart" required><br>
-      <button type="submit">Ajouter la journée</button>
-    </form>
-    <br>
-    <div id="listePlanning"></div>
-    <br>
-    <a href="index.html"><button>Retour Accueil</button></a>
+
+    <!-- Bouton retour à l'accueil -->
+    <a href="index.html"><button type="button">Retour à l'accueil</button></a>
+
+    <p>La gestion du planning sera ajoutée ici plus tard.</p>
+
   </div>
 
-  <script src="app.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "TA_CLE_API",
+      authDomain: "TON_DOMAINE.firebaseapp.com",
+      projectId: "TON_PROJECT_ID",
+      storageBucket: "TON_PROJECT_ID.appspot.com",
+      messagingSenderId: "TON_MESSAGING_ID",
+      appId: "TON_APP_ID",
+      measurementId: "TON_MEASUREMENT_ID"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+  </script>
+
+  <script src="auth.js"></script>
+
 </body>
 </html>

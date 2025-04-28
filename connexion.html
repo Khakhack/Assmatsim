@@ -5,18 +5,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Connexion</title>
   <link rel="stylesheet" href="style.css">
+  <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js"></script>
 </head>
 <body>
+
   <div class="container">
     <h1>Connexion</h1>
+
     <form id="formConnexion">
       <input type="email" id="emailConnexion" placeholder="Email" required>
       <input type="password" id="motDePasseConnexion" placeholder="Mot de passe" required>
       <button type="submit">Connexion</button>
     </form>
+
     <p>Pas encore de compte ? <a href="inscription.html">S'inscrire</a></p>
   </div>
 
+  <script>
+    const firebaseConfig = {
+      apiKey: "TA_CLE_API",
+      authDomain: "TON_DOMAINE.firebaseapp.com",
+      projectId: "TON_PROJECT_ID",
+      storageBucket: "TON_PROJECT_ID.appspot.com",
+      messagingSenderId: "TON_MESSAGING_ID",
+      appId: "TON_APP_ID",
+      measurementId: "TON_MEASUREMENT_ID"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+  </script>
+
   <script src="auth.js"></script>
+
 </body>
 </html>
