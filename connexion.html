@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion - App Assmat</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js"></script>
+    <script src="app.js"></script>
+    <script src="auth.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Connexion</h1>
+        <input type="email" id="emailConnexion" placeholder="Email">
+        <input type="password" id="passwordConnexion" placeholder="Mot de passe">
+        <button onclick="connecterUtilisateur(document.getElementById('emailConnexion').value, document.getElementById('passwordConnexion').value)">Se connecter</button>
+        <br><br>
+        <a href="inscription.html">Pas encore de compte ? S'inscrire</a>
+    </div>
+</body>
+</html>
