@@ -1,81 +1,20 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Liste des enfants</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div class="container">
-    <h1>Liste des enfants</h1>
-    <div id="listeEnfants"></div>
-    <br>
-    <a href="index.html"><button>Retour Accueil</button></a>
-  </div>
-
-  <script src="app.js"></script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="fr">
-<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liste des enfants</title>
+    <title>Enfants / Contrats</title>
     <link rel="stylesheet" href="style.css">
-    
-    <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js"></script>
 </head>
 <body>
+    <div class="container">
+        <h1>Enfants / Contrats</h1>
+        <div id="listeEnfants" class="liste-enfants">
+            <!-- Les enfants ajoutés s'afficheront ici dynamiquement -->
+        </div>
+    </div>
 
-<div class="container">
-    <h1>Enfants enregistrés</h1>
-    <div id="listeEnfants"></div>
-
-    <!-- Bouton Déconnexion -->
-    <button onclick="deconnexionUtilisateur()">Déconnexion</button>
-</div>
-
-<!-- Scripts -->
-<script src="auth.js"></script>
-<script src="app.js"></script>
-
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    const db = firebase.firestore();
-    const enfantsContainer = document.getElementById('listeEnfants');
-
-    db.collection("enfants")
-      .where("utilisateur", "==", firebase.auth().currentUser.email) // 🔥 On affiche seulement les enfants de l'utilisateur connecté
-      .get()
-      .then((querySnapshot) => {
-          querySnapshot.forEach((doc) => {
-              const enfant = doc.data();
-              const div = document.createElement('div');
-              div.className = "enfant";
-              div.innerHTML = `
-                  <h3>${enfant.prenom} ${enfant.nom}</h3>
-                  <p>Naissance : ${enfant.dateNaissance}</p>
-                  <p>Parent : ${enfant.nomParent}</p>
-                  <p>Téléphone : ${enfant.telephone}</p>
-                  <p>Contrat : ${enfant.typeContrat}</p>
-                  <p>Date début : ${enfant.dateDebut}</p>
-                  <p>Heures/Semaine : ${enfant.heuresParSemaine}</p>
-                  <p>Jours/Semaine : ${enfant.joursParSemaine}</p>
-                  <p>Remarques : ${enfant.remarques}</p>
-              `;
-              enfantsContainer.appendChild(div);
-          });
-      })
-      .catch((error) => {
-          console.error("Erreur lors du chargement des enfants :", error);
-      });
-});
-</script>
-
+    <script src="app.js"></script>
+    <script src="auth.js"></script>
 </body>
 </html>

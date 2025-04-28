@@ -5,36 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ajouter un enfant</title>
     <link rel="stylesheet" href="style.css">
-    
-    <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js"></script>
 </head>
 <body>
+    <div class="container">
+        <h1>Ajouter un enfant</h1>
+        <form id="formulaireEnfant" class="form-container">
+            <input type="text" id="prenom" placeholder="Prénom" required>
+            <input type="text" id="nom" placeholder="Nom" required>
+            <input type="date" id="dateNaissance" placeholder="Date de naissance" required>
+            <input type="text" id="nomParent" placeholder="Nom du parent" required>
+            <input type="tel" id="telephone" placeholder="Téléphone" required>
+            
+            <select id="typeContrat">
+                <option value="Complet">Contrat Complet</option>
+                <option value="Incomplet">Contrat Incomplet</option>
+            </select>
 
-<div class="container">
-    <h1>Ajouter un enfant</h1>
+            <select id="cdiCdd">
+                <option value="CDI">CDI</option>
+                <option value="CDD">CDD</option>
+            </select>
 
-    <input type="text" id="prenom" placeholder="Prénom"><br>
-    <input type="text" id="nom" placeholder="Nom"><br>
-    <input type="date" id="dateNaissance" placeholder="Date de naissance"><br>
-    <input type="text" id="nomParent" placeholder="Nom du parent"><br>
-    <input type="text" id="telephone" placeholder="Téléphone"><br>
-    <select id="typeContrat">
-        <option value="complet">Contrat Complet</option>
-        <option value="incomplet">Contrat Incomplet</option>
-    </select><br>
-    <input type="date" id="dateDebut" placeholder="Date de début de contrat"><br>
-    <input type="number" id="heuresParSemaine" placeholder="Nombre d'heures par semaine"><br>
-    <input type="number" id="joursParSemaine" placeholder="Nombre de jours par semaine"><br>
-    <textarea id="remarques" placeholder="Remarques"></textarea><br>
+            <input type="date" id="dateDebutContrat" placeholder="Date de début de contrat" required>
+            <input type="number" id="heuresSemaine" placeholder="Nombre d'heures par semaine" required>
+            <input type="number" id="joursSemaine" placeholder="Nombre de jours par semaine" required>
 
-    <button onclick="enregistrerEnfant()">Enregistrer</button>
-</div>
+            <input type="number" id="montantHoraire" placeholder="Montant horaire (€)" required>
+            <input type="number" id="majorationComplementaire" placeholder="Majoration heures complémentaires (%)" required>
+            <input type="number" id="majorationSupplementaire" placeholder="Majoration heures supplémentaires (%)" required>
 
-<script src="auth.js"></script>
-<script src="app.js"></script>
+            <select id="repasFournis">
+                <option value="Oui">Repas fournis par les parents</option>
+                <option value="Non">Repas fournis par l'assmat</option>
+            </select>
 
+            <input type="number" id="prixRepas" placeholder="Prix du repas (€)">
+            <input type="number" id="fraisEntretien" placeholder="Frais d'entretien (€)" required>
+
+            <textarea id="remarques" placeholder="Remarques"></textarea>
+
+            <button type="submit">Enregistrer</button>
+        </form>
+    </div>
+
+    <script src="app.js"></script>
+    <script src="auth.js"></script>
 </body>
 </html>
