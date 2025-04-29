@@ -1,49 +1,56 @@
-// app.js
-
-// Importer ce qu'il faut depuis firebase.js
-import { db } from "./firebase.js";
+// Import Firebase
+import { db } from './firebase.js';
+import { collection, addDoc } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore-lite.js";
 
 // Fonction pour enregistrer un enfant
-export function enregistrerEnfant(event) {
-  event.preventDefault(); // Empêche la page de recharger
-  
-  const prenom = document.getElementById('prenom').value;
-  const nom = document.getElementById('nom').value;
-  const dateNaissance = document.getElementById('dateNaissance').value;
-  const nomParent = document.getElementById('nomParent').value;
-  const telephone = document.getElementById('telephone').value;
-  const typeContrat = document.getElementById('typeContrat').value;
-  const dateDebut = document.getElementById('dateDebut').value;
-  const nbHeures = document.getElementById('nbHeures').value;
-  const nbJours = document.getElementById('nbJours').value;
-  const remarques = document.getElementById('remarques').value;
+async function enregistrerEnfant() {
+    const prenom = document.getElementById('prenom').value.trim();
+    const nom = document.getElementById('nom').value.trim();
+    const dateNaissance = document.getElementById('dateNaissance').value;
+    const nomParent = document.getElementById('nomParent').value.trim();
+    const telephone = document.getElementById('telephone').value.trim();
+    const typeContrat = document.getElementById('typeContrat').value;
+    const typeCdiCdd = document.getElementById('typeCdiCdd').value;
+    const dateDebutContrat = document.getElementById('dateDebutContrat').value;
+    const heuresSemaine = document.getElementById('heuresSemaine').value;
+    const joursSemaine = document.getElementById('joursSemaine').value;
+    const repas = document.getElementById('repas').value.trim();
+    const majorationHeureComplementaire = document.getElementById('majorationHeureComplementaire').value;
+    const majorationHeureSupp = document.getElementById('majorationHeureSupp').value;
+    const fraisEntretien = document.getElementById('fraisEntretien').value.trim();
+    const remarques = document.getElementById('remarques').value.trim();
 
-  // Vérification rapide
-  if (!prenom || !nom) {
-    alert("Merci de remplir au minimum le prénom et le nom !");
-    return;
-  }
+    if (!prenom || !nom) {
+        alert('Veuillez remplir tous les champs requis.');
+        return;
+    }
 
-  // Ajouter dans la base Firestore
-  db.collection("enfants").add({
-    prenom,
-    nom,
-    dateNaissance,
-    nomParent,
-    telephone,
-    typeContrat,
-    dateDebut,
-    nbHeures: parseFloat(nbHeures),
-    nbJours: parseFloat(nbJours),
-    remarques,
-    creeLe: new Date()
-  })
-  .then(() => {
-    alert("Enfant enregistré avec succès !");
-    window.location.href = "enfants.html"; // Rediriger vers la page des enfants
-  })
-  .catch((error) => {
-    console.error("Erreur lors de l'ajout : ", error);
-    alert("Erreur lors de l'enregistrement.");
-  });
+    try {
+        await addDoc(collection(db, "enfants"), {
+            prenom,
+            nom,
+            dateNaissance,
+            nomParent,
+            telephone,
+            typeContrat,
+            typeCdiCdd,
+            dateDebutContrat,
+            heuresSemaine,
+            joursSemaine,
+            repas,
+            majorationHeureComplementaire,
+            majorationHeureSupp,
+            fraisEntretien,
+            remarques,
+            createdAt: new Date()
+        });
+        alert('Enfant ajouté avec succès !');
+        document.getElementById('ajouter-enfant-form').reset();
+    } catch (error) {
+        console.error('Erreur lors de l\'ajout :', error);
+        alert('Erreur lors de l\'ajout.');
+    }
 }
+
+// Pour rendre la fonction accessible au HTML
+window.enregistrerEnfant = enregistrerEnfant;
