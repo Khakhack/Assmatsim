@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ajouter un enfant</title>
+  <title>➕ Ajouter un enfant</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -48,61 +48,43 @@
       <button type="button" onclick="enregistrerEnfant()">✅ Enregistrer</button>
     </form>
 
-    <!-- Bouton retour à l'accueil -->
-    <a href="index.html"><button type="button">🏠 Accueil</button></a>
+    <!-- Bouton retour -->
+    <a href="index.html"><button type="button">🏠 Retour à l'accueil</button></a>
   </div>
 
-  <!-- IMPORTATION FIREBASE + SCRIPT -->
   <script type="module">
     import { db } from './firebase.js';
     import { collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
 
     async function enregistrerEnfant() {
-      const prenom = document.getElementById('prenom').value;
-      const nom = document.getElementById('nom').value;
-      const dateNaissance = document.getElementById('dateNaissance').value;
-      const nomParent = document.getElementById('nomParent').value;
-      const telephone = document.getElementById('telephone').value;
-      const typeContrat = document.getElementById('typeContrat').value;
-      const cdiCdd = document.getElementById('cdiCdd').value;
-      const dateDebutContrat = document.getElementById('dateDebutContrat').value;
-      const heuresSemaine = document.getElementById('heuresSemaine').value;
-      const joursSemaine = document.getElementById('joursSemaine').value;
-      const montantHoraire = document.getElementById('montantHoraire').value;
-      const majorationComplementaire = document.getElementById('majorationComplementaire').value;
-      const majorationSupplementaire = document.getElementById('majorationSupplementaire').value;
-      const repasFournis = document.getElementById('repasFournis').value;
-      const prixRepas = document.getElementById('prixRepas').value;
-      const fraisEntretien = document.getElementById('fraisEntretien').value;
-      const remarques = document.getElementById('remarques').value;
+      const enfant = {
+        prenom: document.getElementById('prenom').value,
+        nom: document.getElementById('nom').value,
+        dateNaissance: document.getElementById('dateNaissance').value,
+        nomParent: document.getElementById('nomParent').value,
+        telephone: document.getElementById('telephone').value,
+        typeContrat: document.getElementById('typeContrat').value,
+        cdiCdd: document.getElementById('cdiCdd').value,
+        dateDebutContrat: document.getElementById('dateDebutContrat').value,
+        heuresSemaine: document.getElementById('heuresSemaine').value,
+        joursSemaine: document.getElementById('joursSemaine').value,
+        montantHoraire: document.getElementById('montantHoraire').value,
+        majorationComplementaire: document.getElementById('majorationComplementaire').value,
+        majorationSupplementaire: document.getElementById('majorationSupplementaire').value,
+        repasFournis: document.getElementById('repasFournis').value,
+        prixRepas: document.getElementById('prixRepas').value,
+        fraisEntretien: document.getElementById('fraisEntretien').value,
+        remarques: document.getElementById('remarques').value,
+        timestamp: serverTimestamp()
+      };
 
       try {
-        await addDoc(collection(db, "enfants"), {
-          prenom,
-          nom,
-          dateNaissance,
-          nomParent,
-          telephone,
-          typeContrat,
-          cdiCdd,
-          dateDebutContrat,
-          heuresSemaine,
-          joursSemaine,
-          montantHoraire,
-          majorationComplementaire,
-          majorationSupplementaire,
-          repasFournis,
-          prixRepas,
-          fraisEntretien,
-          remarques,
-          timestamp: serverTimestamp()
-        });
-
+        await addDoc(collection(db, "enfants"), enfant);
         alert("Enfant enregistré avec succès !");
         window.location.href = "enfants.html";
       } catch (e) {
-        console.error("Erreur lors de l'ajout :", e);
-        alert("Erreur lors de l'enregistrement. Merci de réessayer.");
+        console.error("Erreur lors de l'enregistrement :", e);
+        alert("Erreur d'enregistrement, réessayez.");
       }
     }
   </script>
