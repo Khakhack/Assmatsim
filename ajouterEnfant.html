@@ -9,7 +9,7 @@
 <body>
 
   <div class="container">
-    <h1>Ajouter un enfant</h1>
+    <h1>➕ Ajouter un enfant</h1>
     <form id="formulaireEnfant" class="form-container">
       <input type="text" id="prenom" placeholder="Prénom" required>
       <input type="text" id="nom" placeholder="Nom" required>
@@ -45,8 +45,11 @@
 
       <textarea id="remarques" placeholder="Remarques"></textarea>
 
-      <button type="button" onclick="enregistrerEnfant()">Enregistrer</button>
+      <button type="button" onclick="enregistrerEnfant()">✅ Enregistrer</button>
     </form>
+
+    <!-- Bouton retour à l'accueil -->
+    <a href="index.html"><button type="button">🏠 Accueil</button></a>
   </div>
 
   <!-- IMPORTATION FIREBASE + SCRIPT -->
@@ -96,7 +99,7 @@
         });
 
         alert("Enfant enregistré avec succès !");
-        window.location.href = "enfants.html"; // Rediriger vers la liste après enregistrement
+        window.location.href = "enfants.html";
       } catch (e) {
         console.error("Erreur lors de l'ajout :", e);
         alert("Erreur lors de l'enregistrement. Merci de réessayer.");

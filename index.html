@@ -5,60 +5,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Accueil - Mon App Assmat</title>
   <link rel="stylesheet" href="style.css">
-  <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js"></script>
 </head>
 <body>
 
   <div class="container">
-    <h1>Bienvenue sur votre App Assmat</h1>
-    
-    <div id="bienvenue"></div> <!-- Ici affichage email connecté -->
-
+    <h1>🏠 Bienvenue sur votre App Assmat</h1>
     <div class="button-container">
-      <a href="ajouterEnfant.html">
-        <button>
-          <img src="ajouter.png" alt="Ajouter"> Ajouter un enfant
-        </button>
-      </a>
-
-      <a href="enfants.html">
-        <button>
-          <img src="contrat.png" alt="Enfants"> Enfants / Contrats
-        </button>
-      </a>
-
-      <a href="planning.html">
-        <button>
-          <img src="planning.png" alt="Planning"> Planning
-        </button>
-      </a>
-
-      <a href="calculs.html">
-        <button>
-          <img src="calculs.png" alt="Calculs"> Calculs
-        </button>
-      </a>
+      <a href="ajouterEnfant.html"><button>➕ Ajouter un enfant</button></a>
+      <a href="enfants.html"><button>👶 Mes enfants</button></a>
+      <a href="planning.html"><button>📅 Planning</button></a>
+      <a href="calculs.html"><button>🧮 Calculs</button></a>
     </div>
 
-    <button onclick="deconnexionUtilisateur()">Déconnexion</button>
+    <!-- Bouton déconnexion -->
+    <button onclick="deconnexionUtilisateur()">🚪 Déconnexion</button>
   </div>
+
+  <!-- IMPORTATION FIREBASE + SCRIPT -->
+  <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js"></script>
 
   <script>
     const firebaseConfig = {
-      apiKey: "AIzaSyDMyuNMouCQEUlG6cg2uE2ib9cI-WWnx-o_API",
+      apiKey: "TA_CLE_API",
       authDomain: "assmatsim.firebaseapp.com",
       projectId: "assmatsim",
-      storageBucket: "assmatsim.firebasestorage.app",
-      messagingSenderId: "73332672940",
-      appId: "1:73332672940:web:29243e73f8f13195a4d209",
-      measurementId: "G-DYJD1PEXZ9"
+      storageBucket: "assmatsim.appspot.com",
+      messagingSenderId: "TON_ID",
+      appId: "TON_APP_ID"
     };
-
-    firebase.initializeApp(firebaseConfig);
-    const auth = firebase.auth();
-    const db = firebase.firestore();
+    const app = firebase.initializeApp(firebaseConfig);
   </script>
 
   <script src="auth.js"></script>
